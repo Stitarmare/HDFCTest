@@ -19,8 +19,6 @@ class _StateBreweriesListScreen extends State<BreweriesListScreen> {
   List<ListBreweriesEntity> listBreweriesEntity;
   @override
   void initState() {
-    // TODO: implement initState
-
     _breweriesListPresentation = BreweriesListPresentation();
     getData();
     super.initState();
