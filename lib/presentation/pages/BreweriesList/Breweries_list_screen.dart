@@ -27,8 +27,12 @@ class _StateBreweriesListScreen extends State<BreweriesListScreen> {
   }
 
   getData() async {
+    setState(() {
+      isLoading = true;
+    });
     final value = await _breweriesListPresentation.getData();
     setState(() {
+      isLoading = false;
       listBreweriesEntity = value;
     });
   }
