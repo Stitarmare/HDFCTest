@@ -3,14 +3,12 @@ import 'dart:convert';
 import 'package:hdfcTestApp/data/localdatasource/local_web_datasource.dart';
 import 'package:hdfcTestApp/data/model/list_brewerie_model.dart';
 import 'package:hdfcTestApp/data/remotedatasource/get_list_breweries_datasource.dart';
-import 'package:hdfcTestApp/domain/repositories/get_list_breweries_repository.dart';
+import 'package:hdfcTestApp/domain/entity/list_reweries_entity.dart';
 
-class GetListBreweriesRepositoryImpl implements GetListBreweriesRepository {
-  RemoteDataSource dataSource;
-  LocalWebDatasource localWebDatasource;
-  GetListBreweriesRepositoryImpl({this.dataSource, this.localWebDatasource});
-  @override
-  Future<List<ListBreweriesModel>> getBreweries() async {
+class BreweriesListPresentation {
+  LocalWebDatasource localWebDatasource = LocalWebDatasource();
+  RemoteDataSource dataSource = RemoteDataSource();
+  Future<List<ListBreweriesEntity>> getData() async {
     final value = localWebDatasource.getCookie("breweries") as String;
     if (value != null && value != "") {
       final jsonValue = json.decode(value);
