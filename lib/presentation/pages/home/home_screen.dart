@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:hdfcTestApp/data/model/list_brewerie_model.dart';
 import 'package:hdfcTestApp/presentation/pages/BreweriesList/Breweries_list_screen.dart';
+import 'dart:js' as js;
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -17,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         child: Center(
           child: RaisedButton(
-            onPressed: () {
+            onPressed: () async {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => BreweriesListScreen()));
             },
