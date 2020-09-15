@@ -16,12 +16,16 @@ class BreweriesListPresentation {
           jsonValue.map((x) => ListBreweriesModel.fromMap(x)));
       list(listBrew);
     } else {
-      js.context.callMethod('alertMessage', [
-        (f) {
-          final jsonValue = json.decode(f);
-          final listBrew = List<ListBreweriesModel>.from(
-              jsonValue.map((x) => ListBreweriesModel.fromMap(x)));
-          list(listBrew);
+      js.context.callMethod('checkBroweserComapatiblity', [
+        (data) {
+          if (data != null) {
+            final jsonValue = json.decode(data);
+            final listBrew = List<ListBreweriesModel>.from(
+                jsonValue.map((x) => ListBreweriesModel.fromMap(x)));
+            list(listBrew);
+          } else {
+            list(null);
+          }
         }
       ]);
     }
